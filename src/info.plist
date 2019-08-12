@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>acb.restartalfred</string>
+	<key>connections</key>
+	<dict>
+		<key>100E701D-B059-408F-B832-A8D3E9D905DD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7DA45808-938E-4A90-8805-E01BC8A121A5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>7DA45808-938E-4A90-8805-E01BC8A121A5</key>
+		<array/>
+	</dict>
+	<key>createdby</key>
+	<string>Andrew Curtis-Black</string>
+	<key>description</key>
+	<string>Quits and restarts Alfred and his preferences</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Restart Alfred</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>restart</string>
+				<key>subtext</key>
+				<string>Quit and restart Alfred and his preferences (if they're open)</string>
+				<key>text</key>
+				<string>Restart Alfred</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>100E701D-B059-408F-B832-A8D3E9D905DD</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string># Quit Alfred 2 and his preferencesif application "Alfred 2" is running then	tell application "Alfred 2" to quitend ifset prefsWasOpen to falseif application "Alfred Preferences" is running then
+	set prefsWasOpen to true	tell application "Alfred Preferences" to quitend ifdelay 1 # Wait for the processes to terminate# Restart and display processestell application "Alfred 2" to activate
+
+if prefsWasOpen then
+	tell application "Alfred Preferences" to activate
+end if
+
+# Display Alfredtell application "Alfred 2" to search</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7DA45808-938E-4A90-8805-E01BC8A121A5</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>100E701D-B059-408F-B832-A8D3E9D905DD</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>7DA45808-938E-4A90-8805-E01BC8A121A5</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://www.alfredforum.com/topic/1842-restart-alfred-workflow/</string>
+</dict>
+</plist>
