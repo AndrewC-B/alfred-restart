@@ -55,14 +55,28 @@
 				<key>escaping</key>
 				<integer>63</integer>
 				<key>script</key>
-				<string># Quit Alfred 2 and his preferencesif application "Alfred 2" is running then	tell application "Alfred 2" to quitend ifset prefsWasOpen to falseif application "Alfred Preferences" is running then
-	set prefsWasOpen to true	tell application "Alfred Preferences" to quitend ifdelay 1 # Wait for the processes to terminate# Restart and display processestell application "Alfred 2" to activate
+				<string># Quit Alfred 4 and his preferences
+if application id "com.runningwithcrayons.Alfred" is running then
+	tell application id "com.runningwithcrayons.Alfred" to quit
+end if
+
+set prefsWasOpen to false
+if application "Alfred Preferences" is running then
+	set prefsWasOpen to true
+	tell application "Alfred Preferences" to quit
+end if
+
+delay 1 # Wait for the processes to terminate
+
+# Restart and display processes
+tell application id "com.runningwithcrayons.Alfred" to activate
 
 if prefsWasOpen then
 	tell application "Alfred Preferences" to activate
 end if
 
-# Display Alfredtell application "Alfred 2" to search</string>
+# Display Alfred
+tell application id "com.runningwithcrayons.Alfred" to search</string>
 				<key>type</key>
 				<integer>6</integer>
 			</dict>
